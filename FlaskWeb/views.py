@@ -1,4 +1,3 @@
-
 """
 Routes and views for the flask application.
 """
@@ -18,6 +17,7 @@ def allowed_file(filename):
 
 @app.route('/')
 def logie():
+    session.permanent = False
     if not session.get('logged_in'):
         return render_template('login.html')
     else:
