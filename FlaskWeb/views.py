@@ -4,7 +4,7 @@ Routes and views for the flask application.
 """
 import os
 from datetime import datetime
-from flask import Flask, render_template, request, redirect, url_for, send_from_directory,flash
+from flask import Flask, render_template, request, redirect, url_for, send_from_directory,flash,session
 from werkzeug import secure_filename
 from FlaskWeb import app
 import urllib.request
@@ -12,13 +12,16 @@ from io import StringIO,BytesIO
 from azure.storage.blob import BlockBlobService
 import pandas as pd
 
-
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1] in app.config['ALLOWED_EXTENSIONS']
 
 
-
 @app.route('/')
+def logie():
+    if not session.get('logged_in'):
+        return render_template('login.html')
+    else:
+        return render_template('index.html')
 
 @app.route('/home')
 def home():
@@ -107,6 +110,7 @@ def parse1(name=None):
     from FlaskWeb import ASG
     print("done")
     return "Forecasting for DU ASG has been completed"
+    
 @app.route('/exec2')
 def parse2(name=None):
     from FlaskWeb import MKT
@@ -137,4 +141,53 @@ def parse7(name=None):
     from FlaskWeb import MTS
     print("done")
     return "Forecasting for DU MTS has been completed"
+@app.route('/exec8')
+def parse8(name=None):
+    from FlaskWeb import total
+    from FlaskWeb import ASG
+    from FlaskWeb import MKT
+    from FlaskWeb import MOBILE
+    from FlaskWeb import SSE
+    from FlaskWeb import TTS
+    from FlaskWeb import EEG
+    from FlaskWeb import MTS
+    print("done")
+    return render_template(
+        'index1.html',
+        title='exec',
+        time = datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        year=datetime.now().year,
+        message='Your exec page.'
+    )
+    
+@app.route('/login', methods=['POST'])
+def do_admin_login():
+    j=0
+    blobservice = BlockBlobService(account_name='flaskstorage', account_key='4+JwE+i1NvLF/oJuqmEVb0nNEiX0+9Tnq8M6U28cA0hsjP4qlpAfaSORdOg0Kphw2CWf/Zp4uPZG+M/sfdZytQ==') 
+    byte_stream = BytesIO()
+    blobservice.get_blob_to_stream(container_name='htflaskcontainer', blob_name='Authorisation.xlsx', stream=byte_stream)
+    byte_stream.seek(0)
+    userpass=pd.read_excel(byte_stream)
+    byte_stream.close()
+    for i in range(len(userpass['User-Name'])):
+        if request.form['username'] == userpass['User-Name'][i]: 
+            if request.form['password'] == userpass['Password'][i]:
+                session['logged_in'] = True
+                
+            else:
+                flash("Password for the given username didn't match!")
+                return redirect('/')
+        else:       
+             j= j+1
+             print('gh',j)
+             if j >= len(userpass['User-Name']):
+                 print(j)
+                 flash("Seems like you are not authorised to access this Website")
+    return redirect('/')
+
+@app.route("/logout",methods=['POST'])
+def logout():
+    if request.method == 'POST':
+        session['logged_in'] = False
+        return redirect('/')
 

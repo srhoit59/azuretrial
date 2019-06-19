@@ -124,6 +124,17 @@ a.animated-button.victoria-two:after {
   transform: translateX(-50%) translateY(-50%) rotate(25deg);
 }
 
+a.animated-button.victoria-three {
+  border: 2px solid #D24D57;
+}
+a.animated-button.victoria-three:after {
+  background: #D24D57;
+  -moz-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+  -ms-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+  -webkit-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+  transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+}
+
 }
 </style>
 <div class="jumbotron text-center">
@@ -131,25 +142,29 @@ a.animated-button.victoria-two:after {
   <div class="container">
     
     <h1>HCL TECHNOLOGIES</h1>
-    <p style="color:#888;">REVENUE, FTE Prediction</p>
-    
+    <p style="color:#888;">REVENUE, FTE Prediction</p>   
+    <p style="color:#888;"> Forecasting has been done on - {{ time }} </p> 
   </div>
 </div>
 <div class="container"> 
   <div class="row">
     <div class="col-md-12 text-center">
-      <h2>CLick on Respective tabs for Frecasting individual DU!</h2>
+      <p>CLick on below tab for Frecasting at once !</p>
+          <div class="col-md-6 col-sm-6 col-xs-6"> <a href="/exec8" class="btn btn-sm animated-button victoria-one">One click Forecast </a> </div>
+            
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6 col-sm-6 col-xs-6"> <a href="/exec" class="btn btn-sm animated-button victoria-one">Total Forecast </a> </div>
-    <div class="col-md-6 col-sm-6 col-xs-6"> <a href="/exec1" class="btn btn-sm animated-button victoria-two">ASG Forecast </a> </div>
-    <div class="col-md-6 col-sm-6 col-xs-6"> <a href="/exec2" class="btn btn-sm animated-button victoria-one">MKT forecast </a> </div>
-    <div class="col-md-6 col-sm-6 col-xs-6"> <a href="/exec3" class="btn btn-sm animated-button victoria-one">MOBILE Forecast </a> </div>
-    <div class="col-md-6 col-sm-6 col-xs-6"> <a href="/exec4" class="btn btn-sm animated-button victoria-one">SSE Forecast </a> </div>
-    <div class="col-md-6 col-sm-6 col-xs-6"> <a href="/exec5" class="btn btn-sm animated-button victoria-one">TTS Forecast </a> </div>
-    <div class="col-md-6 col-sm-6 col-xs-6"> <a href="/exec6" class="btn btn-sm animated-button victoria-one">EEG Forecast </a> </div>
-    <div class="col-md-6 col-sm-6 col-xs-6"> <a href="/exec7" class="btn btn-sm animated-button victoria-one">MTS Forecast </a> </div>
+   <div class="col-md-12 text-center">
+     <p>CLick on Respective tabs for Frecasting individual DU!</p>
+     <div class="col-md-6 col-sm-6 col-xs-6"> <a href="/exec" class="btn btn-sm animated-button victoria-one">Total Forecast </a> </div>
+     <div class="col-md-6 col-sm-6 col-xs-6"> <a href="/exec1" class="btn btn-sm animated-button victoria-two">ASG Forecast </a> </div>
+     <div class="col-md-6 col-sm-6 col-xs-6"> <a href="/exec2" class="btn btn-sm animated-button victoria-one">MKT forecast </a> </div>
+     <div class="col-md-6 col-sm-6 col-xs-6"> <a href="/exec3" class="btn btn-sm animated-button victoria-one">MOBILE Forecast </a> </div>
+     <div class="col-md-6 col-sm-6 col-xs-6"> <a href="/exec4" class="btn btn-sm animated-button victoria-one">SSE Forecast </a> </div>
+     <div class="col-md-6 col-sm-6 col-xs-6"> <a href="/exec5" class="btn btn-sm animated-button victoria-one">TTS Forecast </a> </div>
+     <div class="col-md-6 col-sm-6 col-xs-6"> <a href="/exec6" class="btn btn-sm animated-button victoria-one">EEG Forecast </a> </div>
+     <div class="col-md-6 col-sm-6 col-xs-6"> <a href="/exec7" class="btn btn-sm animated-button victoria-one">MTS Forecast </a> </div>
     
 </body>
 </html>
