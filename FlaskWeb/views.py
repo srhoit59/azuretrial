@@ -81,7 +81,7 @@ def upload_file():
                 return redirect(request.url)
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
-                blobservice = BlockBlobService(account_name='flaskstorage', account_key='4+JwE+i1NvLF/oJuqmEVb0nNEiX0+9Tnq8M6U28cA0hsjP4qlpAfaSORdOg0Kphw2CWf/Zp4uPZG+M/sfdZytQ==') 
+                blobservice = BlockBlobService(account_name='flaskstorage', account_key='M9Hax/c6wKCdVXIcmBafad35/ctWW2OQJQynRMrM29D+mfZXWW53MF0Sthsf0cmWN+/XukVg/aZQ/6XBAB4cgg==') 
                 df=pd.read_excel(file.stream)
                 data= BytesIO()
                 df.to_excel(data, index=False)
@@ -163,7 +163,7 @@ def parse8(name=None):
 @app.route('/login', methods=['POST'])
 def do_admin_login():
     j=0
-    blobservice = BlockBlobService(account_name='flaskstorage', account_key='4+JwE+i1NvLF/oJuqmEVb0nNEiX0+9Tnq8M6U28cA0hsjP4qlpAfaSORdOg0Kphw2CWf/Zp4uPZG+M/sfdZytQ==') 
+    blobservice = BlockBlobService(account_name='flaskstorage', account_key='M9Hax/c6wKCdVXIcmBafad35/ctWW2OQJQynRMrM29D+mfZXWW53MF0Sthsf0cmWN+/XukVg/aZQ/6XBAB4cgg==') 
     byte_stream = BytesIO()
     blobservice.get_blob_to_stream(container_name='htflaskcontainer', blob_name='Authorisation.xlsx', stream=byte_stream)
     byte_stream.seek(0)
