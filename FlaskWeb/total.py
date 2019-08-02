@@ -11,7 +11,7 @@ import os
 from io import StringIO,BytesIO
 from azure.storage.blob import BlockBlobService
 ##reading input data from blob
-blobservice = BlockBlobService(account_name='flaskstorage', account_key='4+JwE+i1NvLF/oJuqmEVb0nNEiX0+9Tnq8M6U28cA0hsjP4qlpAfaSORdOg0Kphw2CWf/Zp4uPZG+M/sfdZytQ==') 
+blobservice = BlockBlobService(account_name='flaskstorage', account_key='M9Hax/c6wKCdVXIcmBafad35/ctWW2OQJQynRMrM29D+mfZXWW53MF0Sthsf0cmWN+/XukVg/aZQ/6XBAB4cgg==') 
 byte_stream = BytesIO()
 blobservice.get_blob_to_stream(container_name='htflaskcontainer', blob_name='totalsdu.xlsx', stream=byte_stream)
 byte_stream.seek(0)
@@ -325,7 +325,7 @@ ASGINC=pd.concat([ASGpos,ASGneg])
 ASGINC=ASGINC.rename(columns={'Unnamed: 0':'Date'})
 
 
-blobservice = BlockBlobService(account_name='flaskstorage', account_key='4+JwE+i1NvLF/oJuqmEVb0nNEiX0+9Tnq8M6U28cA0hsjP4qlpAfaSORdOg0Kphw2CWf/Zp4uPZG+M/sfdZytQ==') 
+blobservice = BlockBlobService(account_name='flaskstorage', account_key='M9Hax/c6wKCdVXIcmBafad35/ctWW2OQJQynRMrM29D+mfZXWW53MF0Sthsf0cmWN+/XukVg/aZQ/6XBAB4cgg==') 
 data= BytesIO()
 ASGINC.to_excel(data, index=False)
 data=bytes(data.getvalue())
@@ -366,7 +366,7 @@ newdf=newdf.rename(columns={'yhat':'Predicted','ds':'Date'})
 
 ##############3
 
-blobservice = BlockBlobService(account_name='flaskstorage', account_key='4+JwE+i1NvLF/oJuqmEVb0nNEiX0+9Tnq8M6U28cA0hsjP4qlpAfaSORdOg0Kphw2CWf/Zp4uPZG+M/sfdZytQ==') 
+blobservice = BlockBlobService(account_name='flaskstorage', account_key='M9Hax/c6wKCdVXIcmBafad35/ctWW2OQJQynRMrM29D+mfZXWW53MF0Sthsf0cmWN+/XukVg/aZQ/6XBAB4cgg==') 
 data= BytesIO()
 newdf.to_excel(data, index=False)
 data=bytes(data.getvalue())
